@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.Classes;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -15,6 +17,10 @@ public class HealthSystem : MonoBehaviour
         }
         set
         {
+            if (value < 0)
+            {
+                value = 0;
+            }
             this._hitpoints = value;
         }
     }
@@ -31,6 +37,7 @@ public class HealthSystem : MonoBehaviour
     public void RemoveHitpoints (float value)
     {
         this._hitpoints -= value;
+        if (this._hitpoints < 0) this._hitpoints = 0; // 0 is the minimum HP value
     }
 
     // Start is called before the first frame update

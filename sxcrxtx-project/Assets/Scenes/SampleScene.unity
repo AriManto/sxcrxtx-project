@@ -774,7 +774,7 @@ GameObject:
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -816,7 +816,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_Sprite: {fileID: 21300000, guid: 2c4e14c1c92ac2d46bb2668666c38404, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -855,12 +855,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _StartingHitpoints: 3
+  HpIndicator: {fileID: 887502531}
   Name: Polinchi
   speed: 25000
   maxVelocity: 300
   rotationInterpolation: 0.25
   isMoving: 0
   _debugHP: 0
+  _debugVelocity: 0
 --- !u!50 &1061198378
 Rigidbody2D:
   serializedVersion: 4
@@ -1319,6 +1321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dff5183d4c13104c86d4821318f29a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startingHitpoints: 1
+  _collisionDamage: 1
+  _size: 1
 --- !u!1 &1896082348
 GameObject:
   m_ObjectHideFlags: 0
