@@ -1,17 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts.Classes;
+﻿using Assets.Scripts.Classes;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class HealthSystem : MonoBehaviour
 {
-    public float _hitpoints;
-    public Player healthObject; // Reference to the object with hitpoints
-    public Text TextElement; // HUD element
-
     #region Properties
+    public float _hitpoints;
+    public IEntity healthObject { get;set; } // Reference to the entity with hitpoints
+    
     public float Hitpoints
     {
         get
@@ -41,12 +36,13 @@ public class HealthSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this._hitpoints = 3;
+        // test value
+        // this._hitpoints = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.TextElement.text = "HP: " + this._hitpoints.ToString();
+        // this.TextElement.text = "HP: " + this._hitpoints.ToString();
     }
 }
