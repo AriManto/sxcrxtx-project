@@ -7,7 +7,7 @@ public class HealthSystem : MonoBehaviour
 {
     #region Properties
     public float _hitpoints;
-    public IEntity healthObject { get;set; } // Reference to the entity with hitpoints
+    //public IEntity healthObject { get;set; } // Reference to the entity with hitpoints - not needed? perhaps for death trigger
     
     public float Hitpoints
     {
@@ -32,12 +32,12 @@ public class HealthSystem : MonoBehaviour
     #endregion
     public void AddHitpoints (float value)
     {
-        this._hitpoints += value;
+        Hitpoints += value;
     }
     public void RemoveHitpoints (float value)
     {
-        this._hitpoints -= value;
-        if (this._hitpoints < 0) this._hitpoints = 0; // 0 is the minimum HP value
+        Hitpoints -= value;
+        if (Hitpoints < 0) Hitpoints = 0; // 0 is the minimum HP value
     }
 
     // Start is called before the first frame update

@@ -27,12 +27,11 @@ namespace Assets.Scripts.Classes
         float facingAngle;
         public bool _debugHP = false;
         public bool _debugVelocity = false;
-        // Use this for initialization
+
         public void Start()
         {
             Health = gameObject.AddComponent<HealthSystem>();
             Health.AddHitpoints(StartingHitpoints);
-            // Movement
             rb = GetComponent<Rigidbody2D>();
 
         }
@@ -42,7 +41,7 @@ namespace Assets.Scripts.Classes
         {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
-            isMoving = (input.x != 0 || input.y != 0) ? true : false; // Ternary operator, to stop player from rotating to initial position
+            isMoving = (input.x != 0 || input.y != 0) ? true : false; // Ternary operator, it's a fix to stop player from rotating to initial position
             //TODO: move this to an event in healthSystem (like "OnHitpointsChanged")
             HpIndicator.text = "HP: " + Health.Hitpoints;
 
@@ -70,6 +69,26 @@ namespace Assets.Scripts.Classes
                 rb.rotation -= 360;
             }
             rb.rotation = Mathf.Lerp(rb.rotation, facingAngle, rotationInterpolation);
+        }
+        public void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider.tag.Equals("Enemy"))
+            {
+                Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
+                Health.RemoveHitpoints(enemy.CollisionDamage);
+                // Add invincibility for 1 sec (with fade effect) - invincibility timer, invincible status. setTimeout?
+                CheckAliveState();  // This should go into HealthSystem to handle each entity dead state
+
+                //enemy.gameObject.SetActive(false); // Should be a Destroy or Dispose? Do damage
+                
+            }
+        }
+        public void CheckAliveState()
+        {
+            if (!Health.IsAlive)
+            {
+                Debug.Log("U'RE DED M8");
+            }
         }
     }
 }
