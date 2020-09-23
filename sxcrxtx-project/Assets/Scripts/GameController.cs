@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Assets.Scripts.Classes;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -25,7 +26,7 @@ public class GameController : MonoBehaviour
          });
         ToggleTestPanel.onValueChanged.AddListener(panelEventListener);
     }
-    void panelEventListener(bool active)
+    public void panelEventListener(bool active)
     {
         TestPanel.gameObject.SetActive(active);
     }
