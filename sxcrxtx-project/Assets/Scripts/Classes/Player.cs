@@ -12,7 +12,7 @@ namespace Assets.Scripts.Classes
         public string Name;
         /* --- HP STUFF --- */
         public HealthSystem Health { get; set; }
-
+        public PlayerMovement PlayerMovement { get; set; }
         public float StartingHitpoints { get { return _StartingHitpoints; } set { _StartingHitpoints = value; } }
         public float _StartingHitpoints = 3;
 
@@ -42,6 +42,9 @@ namespace Assets.Scripts.Classes
         {
             Health = gameObject.AddComponent<HealthSystem>();
             Health.AddHitpoints(StartingHitpoints);
+            PlayerMovement = gameObject.AddComponent<PlayerMovement>();
+            PlayerMovement.Speed = speed;
+            PlayerMovement.Entity = this;
             rb = GetComponent<Rigidbody2D>();
 
         }
