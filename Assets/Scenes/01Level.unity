@@ -784,9 +784,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1061198375}
   - component: {fileID: 1061198374}
-  - component: {fileID: 1061198377}
-  - component: {fileID: 1061198378}
   - component: {fileID: 1061198376}
+  - component: {fileID: 1061198378}
+  - component: {fileID: 1061198377}
+  - component: {fileID: 1061198379}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -937,13 +938,7 @@ MonoBehaviour:
   Name: Polinchi
   _StartingHitpoints: 3
   HpIndicator: {fileID: 887502531}
-  speed: 38000
-  rotationInterpolation: 0.25
-  brakingLinearDrag: 4
-  isBraking: 0
-  isMoving: 0
   _debugHP: 0
-  _debugVelocity: 0
 --- !u!50 &1061198378
 Rigidbody2D:
   serializedVersion: 4
@@ -958,13 +953,33 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0.8
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.6
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1061198379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061198373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d02f34a9d733e489a414ec7fb232a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1061198378}
+  _speed: 30000
+  boostSpeed: 75000
+  rotationInterpolation: 0.3
+  brakingLinearDrag: 4
+  isBraking: 0
+  isBoosting: 0
+  isMoving: 0
 --- !u!1 &1210943915
 GameObject:
   m_ObjectHideFlags: 0

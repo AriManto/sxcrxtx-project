@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IEntityMovement
 {
-    IEntity Entity { get; set; }
+    // GameObject Entity { get; set; }
     float Speed { get; set; }
     void Move();
 
