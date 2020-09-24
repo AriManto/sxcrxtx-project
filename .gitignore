@@ -59,3 +59,16 @@ sysinfo.txt
 crashlytics-build.properties
 # Custom
 .vscode
+# Ignore everything and whitelist with !
+/*
+/*/
+!.gitignore
+!.gitattributes
+!readme.md
+!/Assets/
+!/ProjectSettings/
+
+
+
+
+

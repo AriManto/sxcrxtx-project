@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1061198377}
-  IsTrackingPlayer: 1
+  IsTrackingPlayer: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -934,12 +934,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5dd947cb27585499830e9d66a0c939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Polinchi
   _StartingHitpoints: 3
   HpIndicator: {fileID: 887502531}
-  Name: Polinchi
-  speed: 25000
-  maxVelocity: 300
+  speed: 38000
   rotationInterpolation: 0.25
+  brakingLinearDrag: 4
+  isBraking: 0
   isMoving: 0
   _debugHP: 0
   _debugVelocity: 0
