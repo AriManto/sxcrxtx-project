@@ -391,7 +391,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1061198377}
-  IsTrackingPlayer: 0
+  IsLockedToPlayer: 0
+  IsSmoothFollowingPlayer: 0
+  InterpolationTime: 5
+  TriggerDistance: 400
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
