@@ -16,8 +16,8 @@ namespace Assets.Scripts.Classes
         private KeyCode boostingJoystickKeyCode = KeyCode.JoystickButton1; // Right trigger
         
         // Speed config
-        public float _speed = 30000f;
-        public float boostSpeed = 75000f;
+        public float _speed = 10000f;
+        public float boostSpeed = 25000f;
         public float rotationInterpolation = 0.3f;
         public float brakingLinearDrag = 4f;
         private float defaultLinearDrag = 0.8f;

@@ -30,7 +30,7 @@ namespace Assets.Scripts.Classes
             Health.AddHitpoints(StartingHitpoints);
             HpIndicator.text = "HP: " + Health.Hitpoints;
         }
-
+        #region Collision and triggers
         public void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.collider.tag.Equals("Enemy"))
@@ -38,18 +38,41 @@ namespace Assets.Scripts.Classes
                 Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
                 Health.RemoveHitpoints(enemy.CollisionDamage);
                 // TODO: Add invincibility for 1 sec (with fade effect) - invincibility timer, invincible status. setTimeout?
-                CheckAliveState();  // This should go into HealthSystem to handle each entity dead state
+                UpdateHealth();  // This should go into HealthSystem to handle each entity dead state
             }
+        }
+        #endregion
+        #region Health public methods / Death state
+        // -- Use these to properly update health related events, not HealthSystem directly
+        public void UpdateHealth()
+        {
+            if (_debugHP) Debug.Log("HP:" + this.Health.Hitpoints);
+            HpIndicator.text = "HP: " + Health.Hitpoints;
+            CheckAliveState();
         }
         public void CheckAliveState()
         {
-            HpIndicator.text = "HP: " + Health.Hitpoints;
-            if (_debugHP) Debug.Log("HP:" + this.Health.Hitpoints);
+
             if (!Health.IsAlive)
-            {
-                // Do stuff when ded
-                Debug.Log("U'RE DED M8");
+            {            
+                PlayerDied();
             }
         }
+        public void AddHitpointsToPlayer(float amount)
+        {
+            Health.AddHitpoints(amount);
+            UpdateHealth();
+        }
+        public void RemoveHitpointsFromPlayer(float amount)
+        {
+            Health.RemoveHitpoints(amount);
+            UpdateHealth();
+        }
+        public void PlayerDied()
+        {
+            Debug.Log("U'RE DED M8");
+        }
+        #endregion
+
     }
 }

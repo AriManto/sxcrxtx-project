@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - HealthPack
   layers:
   - Default
   - TransparentFX
@@ -39,9 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3477771117
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: asdasdasd
+  - name: Particles
+    uniqueID: 1960051743
+    locked: 0
+  - name: Foreground
     uniqueID: 1408344541
     locked: 0
