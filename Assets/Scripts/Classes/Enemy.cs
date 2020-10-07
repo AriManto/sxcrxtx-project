@@ -13,11 +13,11 @@ public class Enemy : MonoBehaviour, IEnemy
     public float Size { get { return _size; } set { _size = value > 0 ? value : 1; } } // Default to 1 if set to 0 or negative
     public float _size = 1;
 
+    public GameObject deathEffect;
     // Start is called before the first frame update
     public void Start()
     {
         Health = gameObject.AddComponent<HealthSystem>();
-        StartingHitpoints = 1f;
         Health.AddHitpoints(StartingHitpoints);
     }
 
@@ -26,4 +26,28 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         
     }
+
+    public void TakeDamage(float dmg)
+    {
+        Health.RemoveHitpoints(dmg);
+        CheckAliveState();
+
+    }
+
+    public void CheckAliveState()
+    {
+
+        if (!Health.IsAlive)
+        {
+            EnemyDied();
+        }
+    }
+
+    private void EnemyDied()
+    {
+        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 2f);
+        Destroy(gameObject);
+    }
+
 }

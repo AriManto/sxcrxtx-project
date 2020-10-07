@@ -19,10 +19,10 @@ public class GameController : MonoBehaviour
     void Start()
     {
         DmgButton.GetComponent<Button>().onClick.AddListener(() => { 
-            Player.Health.RemoveHitpoints(1); 
+            Player.RemoveHitpointsFromPlayer(1); 
         });
         HealButton.GetComponent<Button>().onClick.AddListener(() => {
-             Player.Health.AddHitpoints(1);
+             Player.AddHitpointsToPlayer(1);
          });
         ToggleTestPanel.onValueChanged.AddListener(panelEventListener);
     }

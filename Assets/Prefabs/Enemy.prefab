@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4482601496871766916}
   - component: {fileID: 4482601496871766918}
   m_Layer: 0
-  m_Name: enemy1
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   _startingHitpoints: 1
   _collisionDamage: 1
   _size: 1
+  deathEffect: {fileID: 312036095090826971, guid: 046bcf4a9b25d9f41840fa9f831106a5,
+    type: 3}
 --- !u!50 &4482601496871766916
 Rigidbody2D:
   serializedVersion: 4
@@ -135,7 +137,7 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 2.9099998, y: 0.65, z: 1.3399999, w: 2.9399998}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 8, y: 6}
     newSize: {x: 8, y: 6}

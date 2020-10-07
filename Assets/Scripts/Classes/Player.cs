@@ -36,9 +36,8 @@ namespace Assets.Scripts.Classes
             if (collision.collider.tag.Equals("Enemy"))
             {
                 Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
-                Health.RemoveHitpoints(enemy.CollisionDamage);
-                // TODO: Add invincibility for 1 sec (with fade effect) - invincibility timer, invincible status. setTimeout?
-                UpdateHealth();  // This should go into HealthSystem to handle each entity dead state
+                RemoveHitpointsFromPlayer(enemy.CollisionDamage);
+                // TODO: Add invincibility for 1 sec (with fade effect) - invincibility timer, invincible status. setTimeout? - "debounce"
             }
         }
         #endregion
@@ -71,6 +70,11 @@ namespace Assets.Scripts.Classes
         public void PlayerDied()
         {
             Debug.Log("U'RE DED M8");
+        }
+
+        public void TakeDamage(float dmg)
+        {
+            RemoveHitpointsFromPlayer(dmg);
         }
         #endregion
 

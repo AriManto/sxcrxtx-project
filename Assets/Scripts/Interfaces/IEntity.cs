@@ -8,5 +8,6 @@ namespace Assets.Scripts.Classes
         HealthSystem Health { get; set; }
         float StartingHitpoints { get; set; }
 
+        void TakeDamage(float dmg);
     }
 }
