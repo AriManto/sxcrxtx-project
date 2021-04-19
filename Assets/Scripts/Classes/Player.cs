@@ -11,14 +11,17 @@ namespace Assets.Scripts.Classes
         #region Properties and attributes
         public string Name;
         /* --- HP STUFF --- */
+        [SerializeField]
         public HealthSystem Health { get; set; }
         public float StartingHitpoints { get { return _StartingHitpoints; } set { _StartingHitpoints = value; } }
         public float _StartingHitpoints = 3;
-
+        [SerializeField]
         public Text HpIndicator; // Reference to the HP indicator for the player
-
+        [SerializeField]
+        public GameObject deathPanel;
         /* --- MOVEMENT STUFF --- */
-        public PlayerMovement PlayerMovement { get; set; }
+        [SerializeField]
+        public PlayerMovement PlayerMovement;
 
         /* --- DEBUG TOGGLES  --- */
         public bool _debugHP = false;
@@ -51,7 +54,6 @@ namespace Assets.Scripts.Classes
         }
         public void CheckAliveState()
         {
-
             if (!Health.IsAlive)
             {            
                 PlayerDied();
@@ -69,6 +71,9 @@ namespace Assets.Scripts.Classes
         }
         public void PlayerDied()
         {
+            deathPanel.SetActive(true);
+            HpIndicator.gameObject.SetActive(false);
+            PlayerMovement.enabled = false;
             Debug.Log("U'RE DED M8");
         }
 
