@@ -18,7 +18,10 @@ public class Shooting : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))  //GetButton = hold
         {
-            Shoot();
+            if (!GameController.isGamePaused)
+            {
+                Shoot();
+            }
         }
     }
 

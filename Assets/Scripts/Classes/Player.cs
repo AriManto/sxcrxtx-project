@@ -18,7 +18,7 @@ namespace Assets.Scripts.Classes
         [SerializeField]
         public Text HpIndicator; // Reference to the HP indicator for the player
         [SerializeField]
-        public GameObject deathPanel;
+        public GameController GameController;
         /* --- MOVEMENT STUFF --- */
         [SerializeField]
         public PlayerMovement PlayerMovement;
@@ -71,10 +71,10 @@ namespace Assets.Scripts.Classes
         }
         public void PlayerDied()
         {
-            deathPanel.SetActive(true);
-            HpIndicator.gameObject.SetActive(false);
-            PlayerMovement.enabled = false;
-            Debug.Log("U'RE DED M8");
+            GameController.showDeathPanel();
+            GameController.onPlayerDied();
+            //PlayerMovement.enabled = false; //ver si con el pauseGame ya alcanza
+
         }
 
         public void TakeDamage(float dmg)

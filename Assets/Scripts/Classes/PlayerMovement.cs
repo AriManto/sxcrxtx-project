@@ -36,21 +36,24 @@ namespace Assets.Scripts.Classes
 
         private void FixedUpdate()
         {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-            // Check the flags - movement state
-            isMoving = (input.x != 0 || input.y != 0) ? true : false; // Ternary operator, it's a fix to stop player from rotating to initial position
-            isBraking = Input.GetKey(brakingKeyCode) || Input.GetKey(brakingJoystickKeyCode);
-            isBoosting = Input.GetKey(boostingKeyCode) || Input.GetKey(boostingJoystickKeyCode);
-            if (!isBoosting)
+            if (!GameController.isGamePaused)
             {
-                rb.AddForce(input * _speed * Time.deltaTime, ForceMode2D.Force);
-            } else
-            {
-                rb.AddForce(input * boostSpeed * Time.deltaTime, ForceMode2D.Force);
+                input.x = Input.GetAxisRaw("Horizontal");
+                input.y = Input.GetAxisRaw("Vertical");
+                // Check the flags - movement state
+                isMoving = (input.x != 0 || input.y != 0) ? true : false; // Ternary operator, it's a fix to stop player from rotating to initial position
+                isBraking = Input.GetKey(brakingKeyCode) || Input.GetKey(brakingJoystickKeyCode);
+                isBoosting = Input.GetKey(boostingKeyCode) || Input.GetKey(boostingJoystickKeyCode);
+                if (!isBoosting)
+                {
+                    rb.AddForce(input * _speed * Time.deltaTime, ForceMode2D.Force);
+                } else
+                {
+                    rb.AddForce(input * boostSpeed * Time.deltaTime, ForceMode2D.Force);
+                }
+                if (isMoving) GetRotation();
+                rb.drag = isBraking ? brakingLinearDrag : defaultLinearDrag; // Speed down while holding SPACE KEY
             }
-            if (isMoving) GetRotation();
-            rb.drag = isBraking ? brakingLinearDrag : defaultLinearDrag; // Speed down while holding SPACE KEY
         }
         void GetRotation()
         {
